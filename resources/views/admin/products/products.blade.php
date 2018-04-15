@@ -7,22 +7,26 @@
 			<table id="table1" class="display table table-bordered table-striped table-hover white">
 				<thead>
 					<tr>
-						<td>Product Name</td>
-						<td>Quantity</td>
-						<td>Depot</td>
-						<td>Financing Bank</td>
-						<td>Owning BDC</td>
-						<td>Action</td>
+						<th>Product Name</th>
+						<th>LC Number</th>
+						<th>Quantity (MT)</th>
+						<th>Financing Bank</th>
+						<th>Owning BDC</th>
+						<th>Depot</th>
+						<th>Depot Attendant</th>
+						<th>Action</th>
 					</tr>
 				</thead>
 				<tbody>
 					@foreach($models as $product)
-						<tr data-id="{{$product->product_id}}">
-							<td class="product_name name">{{$product->product_name}}</td>
-							<td class="quantity">{{$product->quantity}}</td>
+						<tr data-id="{{ $product->product_id}} ">
+							<td class="product_name name">{{ $product->product_name }}</td>
+							<td class="lc_reference">{{ $product->lc->lc_reference }}</td>
+							<td class="quantity">{{ $product->quantity }}</td>
+							<td class="bank">{{ $product->bank->name }}</td>
+							<td class="bdc">{{ $product->bdc->name }}</td>
 							<td class="depot">{{ $product->depot->name }}</td>
-							<td class="bank">{{$product->bank->name}}</td>
-							<td class="bdc">{{$product->bdc->name}}</td>
+							<td class="username">{{ $product->depot->user->username}}</td>
 							<td>
 								<i class="fa fa-trash modal-trigger" data-action="delete.product" data-target="delete-modal"></i>
 			              		<i class="fa fa-pencil modal-trigger" data-action="update.product" data-target="edit-modal"></i>

@@ -7,10 +7,10 @@
 			<table id="table1" class="display table table-bordered table-striped table-hover white">
 				<thead>
 					<tr>
-						<td>Name</td>
-						<td>Address</td>
-						<td>Phone</td>
-						<td>Action</td>
+						<th>Name</th>
+						<th>Address</th>
+						<th>Phone</th>
+						<th>Action</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -20,8 +20,8 @@
 							<td class="address">{{$bdc->address}}</td>
 							<td class="phone">{{$bdc->phone}}</td>
 							<td>
-								<i class="fa fa-trash modal-trigger" data-action="delete.product" data-target="delete-modal"></i>
-			              		<i class="fa fa-pencil modal-trigger" data-action="update.product" data-target="edit-modal"></i>
+								<i class="fa fa-trash modal-trigger" data-action="delete.bdc" data-target="delete-modal"></i>
+			              		<i class="fa fa-pencil modal-trigger" data-action="update.bdc" data-target="edit-modal"></i>
 							</td>
 						</tr>
 					@endforeach

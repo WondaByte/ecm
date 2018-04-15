@@ -7,11 +7,11 @@
 			<table id="table1" class="display table table-bordered table-striped table-hover white">
 				<thead>
 					<tr>
-						<td>User Name</td>
-						<td>E-Mail Address</td>
-						<td>Phone</td>
-						<td>Status</td>
-						<td>Action</td>
+						<th>User Name</th>
+						<th>E-Mail Address</th>
+						<th>Phone</th>
+						<th>Status</th>
+						<th>Action</th>
 					</tr>
 				</thead>
 				<tbody>

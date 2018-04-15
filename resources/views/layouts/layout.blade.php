@@ -77,43 +77,12 @@
                 </div>
             </div>
             <div class="contents">
-                <div class="row sortable">
-                    <div class="col l3 m6 s12">
-                        <a href="#" class="card-panel z-depth-2 stats-card red lighten-2 red-text text-lighten-5">
-                            <i class="fa fa-comments-o"></i> <span class="count">145</span>
-                            <div class="name">Feedbacks</div>
-                        </a>
-                    </div>
-                    <div class="col l3 m6 s12">
-                        <a href="#" class="card-panel stats-card blue lighten-2 blue-text text-lighten-5">
-                        <i class="fa fa-send"></i> <span class="count">342</span>
-                        <div class="name">Posts</div></a>
-                    </div>
-                    <div class="col l3 m6 s12">
-                        <a href="#" class="card-panel z-depth-2 stats-card amber lighten-2 amber-text text-lighten-5">
-                            <i class="fa fa-cloud-upload"></i> <span class="count">58</span>
-                            <div class="name">Uploads</div>
-                        </a>
-                    </div>
-                    <div class="col l3 m6 s12">
-                        <div class="card-panel z-depth-2 stats-card green lighten-2 green-text text-lighten-5">
-                            <i class="fa fa-spinner"></i> <span class="count">37%</span>
-                            <div class="name">Server Load</div>
-                        </div>
-                    </div>
-                </div>
+                @yield('contents')
             </div>
         </div>
         <footer class="footer">&copy; 2018 Expert Collateral &amp; Monitoring Ltd, Ghana. All rights reserved.</footer>
         @include('includes.scripts')
         <script type="text/javascript" src="{{url('js/admin.js')}}"></script>
-        <script type="text/javascript" src="{{url('js/jquery.dataTables.min.js')}}"></script>
-        <script>
-              $('#table1').DataTable({
-                "bLengthChange": false,
-                "iDisplayLength": 5,
-                "filter": false
-              });
-        </script>
+        @yield('script')
     </body>
 </html>

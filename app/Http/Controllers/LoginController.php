@@ -4,11 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\User;
 
 class LoginController extends Controller
 {
-    //
+
     public function signIn()
     {
     	return view('auth.login');
@@ -62,7 +63,11 @@ class LoginController extends Controller
 
     public function logout()
     {
-    	Auth::logout();
+        $user = User::find(Auth::user()->user_id);
+        $user->status = 0;
+        $user->save();
+        
+        Auth::logout();
     	return redirect('ecm-portal/auth/');
     }
 

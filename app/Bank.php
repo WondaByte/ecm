@@ -7,11 +7,20 @@ use Illuminate\Database\Eloquent\Model;
 class Bank extends Model
 {
     //
-    protected $table = 'banks';
+    protected $table 	  = 'banks';
     protected $primaryKey = 'bank_id';
 
-    public function products()
+    protected $fillable   = [ 'name', 'address', 'phone'];
+
+    public $timestamps = false; 
+
+    public function products()        
     {
-        return $this->hasMany('App\Product');
+    	return $this->hasMany('App\Product');
+    }
+
+    public static function getBanks()
+    {
+    	return self::paginate(20);
     }
 }

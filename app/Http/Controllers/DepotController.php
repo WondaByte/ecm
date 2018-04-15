@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Product;
+use App\Depot;
 
-class ProductController extends Controller
+class DepotController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -35,8 +35,8 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $product = Product::create($request->all());
-        return response()->json(['error' => false, 'message' => 'Product added sucessfully']);
+        Depot::create($request->all());
+        return response()->json(['error' => false, 'message' => 'Depot added Successfully!']);
     }
 
     /**
@@ -70,10 +70,10 @@ class ProductController extends Controller
      */
     public function update(Request $request)
     {
-        $product = Product::find($request->id);
-        $product->update($request->all());
+        $depot = Depot::find($request->id);
+        $depot->update($request->all());
 
-        return response()->json(['error' => false, 'message' => 'Product updated successfully']);
+        return response()->json(['error' => false, 'message' => 'Depot updated successfully']);
     }
 
     /**
@@ -82,9 +82,9 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        Product::find($request->id)->delete();
-        return response()->json(['error' => false, 'message' => 'Product deleted successfully']);
+        Depot::find($request->id)->delete();
+        return response()->json(['error' => false, 'message' => 'Depot deleted successfully']);
     }
 }

@@ -58,9 +58,8 @@ a.brand-logo {
     left: 90%; }
 
 button.btn {
-  background-color: teal; }
-  button.btn:hover {
-    background-color: rgba(0, 128, 128, 0.8); }
+  box-shadow: none;
+  border-radius: 4px; }
 
 form .card-panel {
   border-radius: 8px; }

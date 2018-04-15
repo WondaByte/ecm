@@ -116,7 +116,7 @@ class UserController extends Controller
     public function destroy(Request $request)
     {
         $user = User::find($request->input('id'))->delete();
-        DB::table('role_user')->where('user_id', $request->id)->delete();
+        DB::table('role_user')->where('user_id', $user->user_id)->delete();
         return response()->json(['error' => false, 'message' => 'user removed successfully']);   
     }
 }

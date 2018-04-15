@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Product;
+use App\Constant;
 
-class ProductController extends Controller
+class ConstantController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -35,8 +35,15 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $product = Product::create($request->all());
-        return response()->json(['error' => false, 'message' => 'Product added sucessfully']);
+        $this->validate($request, [
+            'product_id' => 'required',
+            'vcf' => 'required',
+            'density' => 'required',
+            'obs_temperature' => 'required',
+        ]);
+
+        Constant::create($request->all());
+        return response()->json(['error' => false, 'message' => 'Constants Set Successfully!']);
     }
 
     /**
@@ -70,10 +77,10 @@ class ProductController extends Controller
      */
     public function update(Request $request)
     {
-        $product = Product::find($request->id);
-        $product->update($request->all());
+        $constant = Constant::find($request->id);
+        $constant->update($request->all());
 
-        return response()->json(['error' => false, 'message' => 'Product updated successfully']);
+        return response()->json(['error' => false, 'message' => 'Constants updated successfully']);
     }
 
     /**
@@ -82,9 +89,9 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        Product::find($request->id)->delete();
-        return response()->json(['error' => false, 'message' => 'Product deleted successfully']);
+        Constant::find($request->id)->delete();
+        return response()->json(['error' => false, 'message' => 'Constant deleted successfully']);
     }
 }

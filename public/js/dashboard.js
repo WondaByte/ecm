@@ -23,11 +23,8 @@ var bindClickEvents;
 		Actions[action + upperCaseFirst(target)].call(Actions, e);
 	});
 
-
-    $('.collapsible').collapsible();
  	$('.modal-trigger').leanModal();
     $('select').material_select();
-    $('ul.tabs').tabs();
 })();
 
 function serializeFormData(form, formData, ALLOW_EMPTY) {
@@ -211,8 +208,25 @@ var Dashboard = {
 			currentView = '<i class="fa fa-home"></i> '+'Dashboard' + ' / '+ upperCaseFirst(main) + ' / ' + upperCaseFirst(sub);
 
 		$('.link').html(currentView);
-		// $('.links span:eq(1)').text(currentView);
-		
+
+		$('select[name=rep]').change(function(){
+			var rep = $(this).val(),
+				url = 'reports',
+				data = 'name='+rep;
+
+			$.post(url, data, function(result){
+				var tableBody = $('table#reports').find('tbody');
+
+				tableBody.html(result.data);
+				var temp = $('input[name=temp]').val(),
+					density = $('input[name=density]').val();
+					
+				tableBody.find('td:nth-child(8n)').html(temp);
+				tableBody.find('td:nth-child(9n)').html(density);
+
+			});
+		});
+
 		bindClickEvents();
 	},
 
@@ -302,6 +316,3 @@ function getData(page, url){
 
 }
  
-$('.start').on('click', function(){
-	$('.processed').text('ok');
-});

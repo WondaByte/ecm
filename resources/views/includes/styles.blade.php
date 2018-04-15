@@ -4,5 +4,6 @@
 <link rel="stylesheet" type="text/css" href="{{url('fonts/material-design-icons/css/material-design-icons.min.css')}}" media="screen,projection">
 <link rel="stylesheet" type="text/css" href="{{url('css/nanoscroller.css')}}" media="screen,projection">
 <link rel="stylesheet" type="text/css" href="{{url('css/con-base.min.css')}}" media="screen,projection">
+<link rel="stylesheet" type="text/css" href="{{url('css/datatables.min.css')}}" media="screen,projection">
 <link rel="stylesheet" type="text/css" href="{{url('css/ecm.css')}}" media="screen,projection">
 <link rel="icon" type="text/css" href="{{url('img/ecm.png')}}">

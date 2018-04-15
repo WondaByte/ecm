@@ -34,7 +34,7 @@ Route::group(['prefix'=>'ecm-portal', 'middleware' => 'web'], function(){
 		Route::get('/reset-password', 'LoginController@resetPassword');
 		Route::post('/reset-password', 'LoginController@postResetPassword');
 	});
-	
+
 	// registration routes
 	Route::group(['prefix' => 'register'], function(){
 		Route::get('/', 'RegistrationController@getRegister');
@@ -42,7 +42,7 @@ Route::group(['prefix'=>'ecm-portal', 'middleware' => 'web'], function(){
 	});
 
 	// bank routes
-	Route::group(['prefix'=>'bank'], function(){
+	Route::group(['prefix' => 'bank'], function(){
 		Route::get('/dashboard', [
 			'uses' => 'BankController@dashboard',
 			'as' => 'bank/dashboard'
@@ -50,11 +50,13 @@ Route::group(['prefix'=>'ecm-portal', 'middleware' => 'web'], function(){
 	});
 
 	//admin routes
-	Route::group(['prefix'=>'admin'], function(){
+	Route::group(['prefix' => 'admin'], function(){
 		Route::get('/dashboard', [
 			'uses' => 'AdminController@dashboard',
 			'as' => 'admin/dashboard'
 		]);
+
+		Route::post('reports', 'ReportController@show');
 
 		// view routes
 		Route::group(['prefix' => 'view'], function(){          
@@ -70,6 +72,22 @@ Route::group(['prefix'=>'ecm-portal', 'middleware' => 'web'], function(){
 			Route::post('product', 'ProductController@store');
 			Route::delete('product', 'ProductController@destroy');
 			Route::put('product', 'ProductController@update');
+
+			Route::post('constants', 'ConstantController@store');
+			Route::delete('constants', 'ConstantController@destroy');
+			Route::put('constants', 'ConstantController@update');
+
+			Route::post('bank', 'BankController@store');
+			Route::delete('bank', 'BankController@destroy');
+			Route::put('bank', 'BankController@update');
+
+			Route::post('bdc', 'BdcController@store');
+			Route::delete('bdc', 'BdcController@destroy');
+			Route::put('bdc', 'BdcController@update');
+
+			Route::post('depot', 'DepotController@store');
+			Route::delete('depot', 'DepotController@destroy');
+			Route::put('depot', 'DepotController@update');
 		});
 	});
 
@@ -87,5 +105,10 @@ Route::group(['prefix'=>'ecm-portal', 'middleware' => 'web'], function(){
 			'uses' => 'ECMRepController@dashboard',
 			'as' => 'field-rep/dashboard'
 		]);
+
+		Route::group(['prefix' => 'action'], function(){
+			Route::post('/constants', 'ECMRepController@storeConstants');
+			Route::post('/report', 'ECMRepController@submitReport');
+		});
 	});
 });

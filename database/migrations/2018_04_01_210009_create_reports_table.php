@@ -22,9 +22,6 @@ class CreateReportsTable extends Migration
             $table->string('way_bill_number', 50);
             $table->string('customer');
             $table->float('obs_litres');
-            $table->float('obs_temp');
-            $table->float('density_at_15_deg');
-            $table->float('vc_factor');
             $table->float('litres_at_15_deg');
             $table->float('metric_tons_vac');
             $table->float('metric_tons_air');
